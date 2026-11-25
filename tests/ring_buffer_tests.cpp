@@ -30,5 +30,26 @@ int main()
     assert(buffer.pop(value));
     assert(value == 20);
 
+    // Test 5: zawijanie indeksu tail
+    assert(buffer.push(40));
+    assert(buffer.push(50));
+
+    assert(buffer.full());
+    assert(buffer.size() == 3);
+
+    // Kolejność FIFO musi być zachowana po zawinięciu.
+    assert(buffer.pop(value));
+    assert(value == 30);
+
+    assert(buffer.pop(value));
+    assert(value == 40);
+
+    assert(buffer.pop(value));
+    assert(value == 50);
+
+    // Test 6: bufor znów jest pusty
+    assert(buffer.empty());
+    assert(buffer.size() == 0);
+
     return 0;
 }
